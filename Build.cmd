@@ -4,7 +4,7 @@ set dname=%2
 set pw=%3
 if [%fname%]==[] set /p fname="Enter certificate friendly name: "
 if [%dname%]==[] set /p dname="Enter certificate DNS name: "
-if [%pw%]==[] set /p pw="Enter cert Password: "
+if [%pw%]==[] set /p pw="Enter certificate Password: "
 echo [1/3] Generating certificate
 powershell.exe -ExecutionPolicy Bypass -Command ".\builder\Generate-Certificate.ps1 %fname% %dname% %pw%"
 echo [2/3] Building docker image 
