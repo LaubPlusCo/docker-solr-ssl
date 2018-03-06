@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  solr_ssl:
+    image: solr_ssl:6.6.2
+    build:
+      context: ./builder
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solr_home:/opt/solr/server/solr
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    tty: true  
