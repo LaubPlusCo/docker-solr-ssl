@@ -1,0 +1,3 @@
+builder/certs/
+solr_home/**/data
+solr_home/**/index
