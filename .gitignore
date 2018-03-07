@@ -1,3 +1,2 @@
 builder/certs/
-solr_home/**
-solr_home/*.*
+solr_home/
