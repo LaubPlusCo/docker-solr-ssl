@@ -58,9 +58,8 @@ RUN mkdir -p /opt/solr && \
   sed -i -e '/-Dsolr.clustering.enabled=true/ a SOLR_OPTS="$SOLR_OPTS -Dsun.net.inetaddr.ttl=60 -Dsun.net.inetaddr.negative.ttl=60"' /opt/solr/bin/solr.in.sh && \
   chown -R $SOLR_USER:$SOLR_GROUP /opt/solr
 
-COPY scripts /opt/docker-solr/scripts
+ADD ./scripts /opt/docker-solr/scripts
 RUN chown -R $SOLR_USER:$SOLR_GROUP /opt/docker-solr
-
 ADD ./certs /opt/solr/server/etc
 
 EXPOSE 8983
