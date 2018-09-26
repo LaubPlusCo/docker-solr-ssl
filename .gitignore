@@ -1,3 +1,5 @@
 certs/**/*.pfx
-solr_home/**/index
-solr_home/**/data
+solr_home/**/**
+!/solr_home/readme.txt
+!/solr_home/solr.xml
+!/solr_home/zoo.cfg

@@ -20,7 +20,10 @@ Enjoy.
 
 ## Use with Sitecore Installation Framework
 
-To use the SOLR container with the Sitecore Installation Framework 1.2.0 some minor changes has to be made in the sitecore-solr.json and xconnect-solr.json configuration files.
+To use the SOLR container with the Sitecore Installation Framework 1.2.0 some minor changes has to be made in the default configuration files.
+
+- sitecore-solr.json
+- xconnect-solr.json
 
 In both config files you will need to change
 
@@ -40,4 +43,40 @@ Then pass in the full path to `.\solr_home` as SolrRoot.
 
 I do sometime wonder why Sitecore ship these standard config files with hardcoded sub paths when the passed in parameter is not needed by itself at all. The parameter needed by SIF is really just the environment variable SOLR Home so the core configs can be copied in.
 
-Also note that you can remove the SIF tasks related to starting and stopping SOLR Windows Service thus removing the requirement for having SOLR running as a Windows Service.
+You also have to remove the SIF tasks related to starting and stopping the SOLR Windows Service thus removing the requirement for having SOLR running as a Windows Service which is a weird requirement to have by default anyway.
+
+Remove the following 2 tasks from both config files:
+
+```javascript
+   "Tasks": {
+        // Tasks are separate units of work in a configuration.
+        // Each task is an action that will be completed when Install-SitecoreConfiguration is called.
+        // By default, tasks are applied in the order they are declared.
+        // Tasks may reference Parameters, Variables, and config functions. 
+
+        "StopSolr": {
+            // Stops the Solr service if it is running.
+            "Type": "ManageService",
+            "Params": {
+                "Name": "[parameter('SolrService')]",
+                "Status": "Stopped",
+                "PostDelay": 1000
+            }
+        }
+        ...
+                "StartSolr": {
+            // Starts the Solr service.
+            "Type": "ManageService",
+            "Params": {
+                "Name": "[parameter('SolrService')]",
+                "Status": "Running",
+                "PostDelay": 8000
+            }
+        }
+```
+
+Optionally remove the now unused `SolrService` parameter. This might require you to change parameters passed from youryour install script and settings file.
+
+For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will now this. It is a convention for SOLR setups. Anyway, It feels good to clean out some unnecessary complexity ;)
+
+The branch feature/habitat-install contain a folder with modified config files.
