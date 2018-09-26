@@ -1,12 +1,17 @@
 version: "3.3"
 services:
-  solr_ssl:
-    image: solr_ssl:6.6.2
-    build:
-      context: ./builder
+  solr-6-6-2-ssl:
+    image: solr:6.6.2
+    restart: always
     ports:
       - 8983:8983
+    environment:
+      - SOLR_SSL_KEY_STORE=/opt/solr/server/certs/solr-ssl.keystore.pfx
+      - SOLR_SSL_TRUST_STORE=/opt/solr/server/certs/solr-ssl.keystore.pfx
+      - SOLR_SSL_KEY_STORE_PASSWORD=123SecureSolr!
+      - SOLR_SSL_TRUST_STORE_PASSWORD=123SecureSolr!
     volumes:
+      - ./certs:/opt/solr/server/certs
       - ./solr_home:/opt/solr/server/solr
     logging:
       driver: "json-file"

@@ -1,2 +1,3 @@
-builder/certs/
-solr_home/
+certs/**/*.pfx
+solr_home/**/index
+solr_home/**/data

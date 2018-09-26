@@ -1,4 +1,4 @@
-param([String]$fname="solr_ssl", [String]$dname="localhost", [String]$pw="secret", [Int32]$expireMonths=36)
+param([String]$fname="solr_662_ssl", [String]$dname="localhost", [String]$pw="123SecureSolr!", [Int32]$expireMonths=36)
 
 Write-Host "Generating certificate using friendly name $fname & DNS name $dname"
 
