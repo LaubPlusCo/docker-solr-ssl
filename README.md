@@ -1,6 +1,10 @@
 # Docker SOLR with ssl
 
-Simple setup that builds a Linux container on a Windows host running solr with SSL using a generated certificate.
+Simple and effective docker-compose setup of a single Linux container running solr 6.6.2 with SSL preconfigured and the solr_home (the root for core and indexes) and certificates on a shared volume. 
+
+# Prerequisites
+- [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+- Drive shared with Docker (Docker > Shared Drives > _volume_)
 
 ## Quick usage
 
@@ -17,6 +21,8 @@ Simple setup that builds a Linux container on a Windows host running solr with S
 5. Verify that solr is running by opening `https://localhost:8983` in browser
 
 Enjoy.
+
+_note; SOLR version can simply be changed in docker-compose if another solr version is needed. See [https://hub.docker.com/_/solr/]
 
 ## Use with Sitecore Installation Framework
 
