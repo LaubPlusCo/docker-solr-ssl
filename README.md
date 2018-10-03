@@ -4,7 +4,7 @@ Simple and effective docker-compose setup of a single Linux container running so
 
 # Prerequisites
 - [Docker for Windows](https://docs.docker.com/docker-for-windows/)
-- Drive shared with Docker (Docker > Shared Drives > _volume_)
+- Drive shared with Docker (Docker tray icon > Settings > Shared Drives > _volume_)
 
 ## Quick usage
 
