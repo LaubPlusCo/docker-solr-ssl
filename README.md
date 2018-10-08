@@ -1,6 +1,8 @@
 # Docker SOLR with ssl
 
-Simple and effective docker-compose setup of a single Linux container running solr 6.6.2 with SSL preconfigured and the solr_home (the root for core and indexes) and certificates on a shared volume. 
+Simple and effective docker-compose setup of a single Linux container running solr with SSL preconfigured and the solr_home (the root for core and indexes) and certificates on a shared volume.
+
+Some different SOLR version setups are available as branches. If you need a different version simply modify the docker-compose file and update the files in solr_home with the files from the corresponding solr version found in {solr dist package}/server/solr
 
 # Prerequisites
 - [Docker for Windows](https://docs.docker.com/docker-for-windows/)
@@ -21,8 +23,6 @@ Simple and effective docker-compose setup of a single Linux container running so
 5. Verify that solr is running by opening `https://localhost:8983` in browser
 
 Enjoy.
-
-_note; SOLR version can simply be changed in docker-compose if another solr version is needed. See [https://hub.docker.com/_/solr/]
 
 ## Use with Sitecore Installation Framework
 
@@ -84,5 +84,3 @@ Remove the following 2 tasks from both config files:
 Optionally remove the now unused `SolrService` parameter. This might require you to change parameters passed from youryour install script and settings file.
 
 For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will now this. It is a convention for SOLR setups. Anyway, It feels good to clean out some unnecessary complexity ;)
-
-The branch feature/habitat-install contain a folder with modified config files.

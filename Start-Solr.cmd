@@ -7,4 +7,4 @@ IF NOT EXIST %~dp0certs\solr-ssl.keystore.pfx (
     echo [1/2] Using existing %~dp0certs\solr-ssl.keystore.pfx
 )
 echo [2/2] Starting solr container detached.. 
-docker-compose up
+docker-compose up -d
