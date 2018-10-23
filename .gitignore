@@ -4,4 +4,5 @@ certs/**/*.pfx
 !/solr_home/solr.xml
 !/solr_home/zoo.cfg
 !/solr_home/configsets/
+!/solr_home/configsets/_default/
 !/solr_home/configsets/_default/**
