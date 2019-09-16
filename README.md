@@ -83,4 +83,4 @@ Remove the following 2 tasks from both config files or pass in `-Skip "StopSolr"
 
 Optionally also remove the now unused `SolrService` parameter. This might require you to change parameters passed from your install script and settings file.
 
-For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will now this. It is a convention for SOLR setups. Anyway, It feels good to clean out some unnecessary complexity ;)
+For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will know this folder and what it contains. Anyway, It alwyas feels good to get rid of some unnecessary complexity ;)
