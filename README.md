@@ -17,7 +17,7 @@ Some different SOLR version setups are available as branches. If you need a diff
 ## "Advanced" usage
 
 1. Open a PowerShell console as admin in this folder
-2. Run `.\Generate-Certificate.ps1 [name of certificate solr_662_ssl] [certificate domain localhost] [certificate password 123SecureSolr!] [expires months 36]`
+2. Run `.\Generate-Certificate.ps1 [name of certificate solr_811_ssl] [certificate domain localhost] [certificate password 123SecureSolr!] [expires months 36]`
 3. Open docker-compose.yml and change environment parameters SOLR_SSL_KEY_STORE_PASSWORD and SOLR_SSL_TRUST_STORE_PASSWORD to the supplied password used as argument in step 2.
 4. Run `docker-compose up -d` from the console
 5. Verify that solr is running by opening `https://localhost:8983` in browser
@@ -81,6 +81,6 @@ Remove the following 2 tasks from both config files:
         }
 ```
 
-Optionally remove the now unused `SolrService` parameter. This might require you to change parameters passed from youryour install script and settings file.
+Optionally remove the now unused `SolrService` parameter. This might require you to change parameters passed from your install script and settings file.
 
 For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will now this. It is a convention for SOLR setups. Anyway, It feels good to clean out some unnecessary complexity ;)
