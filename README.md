@@ -47,9 +47,9 @@ to
 
 Then pass in the full path to `.\solr_home` as SolrRoot.
 
-I do sometime wonder why Sitecore ship these standard config files with hardcoded sub paths when the passed in parameter is not needed by itself at all. The parameter needed by SIF is really just the environment variable SOLR Home so the core configs can be copied in.
+I do sometime wonder why Sitecore ship these standard config files with hardcoded sub paths when the passed in parameter is not needed by itself at all. The parameter needed by SIF is really just the path to the solr_home directory so the ootb Sitecore core configsets can be copied to the folder.
 
-You also have to remove the SIF tasks related to starting and stopping the SOLR Windows Service thus removing the requirement for having SOLR running as a Windows Service which is a weird requirement to have by default anyway.
+You also have to remove the SIF tasks related to starting and stopping the SOLR Windows Service thus removing the requirement for having SOLR running as a Windows Service which is a weird requirement to have by default anyway since there is absolutely no apparent good reason to wrap SOLR in a Windows Service on a developer machine.
 
 Remove the following 2 tasks from both config files or pass in `-Skip "StopSolr", "StartSolr"` to Install-SitecoreConfiguration
 
