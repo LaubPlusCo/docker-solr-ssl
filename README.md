@@ -26,7 +26,7 @@ Enjoy.
 
 ## Use with Sitecore Installation Framework
 
-To use the SOLR container with the Sitecore Installation Framework 1.2.0 some minor changes has to be made in the default configuration files.
+To use the SOLR container with the Sitecore Installation Frameworksome minor changes has to be made in the default configuration files.
 
 - sitecore-solr.json
 - xconnect-solr.json
@@ -51,7 +51,7 @@ I do sometime wonder why Sitecore ship these standard config files with hardcode
 
 You also have to remove the SIF tasks related to starting and stopping the SOLR Windows Service thus removing the requirement for having SOLR running as a Windows Service which is a weird requirement to have by default anyway.
 
-Remove the following 2 tasks from both config files:
+Remove the following 2 tasks from both config files or pass in `-Skip "StopSolr", "StartSolr"` to Install-SitecoreConfiguration
 
 ```javascript
    "Tasks": {
@@ -81,6 +81,6 @@ Remove the following 2 tasks from both config files:
         }
 ```
 
-Optionally remove the now unused `SolrService` parameter. This might require you to change parameters passed from your install script and settings file.
+Optionally also remove the now unused `SolrService` parameter. This might require you to change parameters passed from your install script and settings file.
 
 For Habitat `install-xpo.ps1` you will have to remove the check for JRE on your machine , the check if the SOLR service is running and the check of the solr root folder - I really do not get why SIF doesnt just take the solr_home path as argument, anyone who used SOLR will now this. It is a convention for SOLR setups. Anyway, It feels good to clean out some unnecessary complexity ;)
