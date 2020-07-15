@@ -12,7 +12,7 @@ services:
       - SOLR_SSL_TRUST_STORE_PASSWORD=123SecureSolr!
     volumes:
       - ./certs:/opt/solr/server/certs
-      - ./solr_home:/opt/solr/server/solr
+      - ./solr_home:/var/solr/data
     logging:
       driver: "json-file"
       options:
